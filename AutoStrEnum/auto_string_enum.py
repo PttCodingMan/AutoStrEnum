@@ -39,18 +39,18 @@ class _MagicMeta(EnumMeta):
         return str(self) == instance.parent
 
 
-generate: dict = {}
+generated: dict = {}
 
 
 class AutoStrEnum(Enum, metaclass=_MagicMeta):
 
     def __get__(self, instance, owner):
-        global generate
+        global generated
 
         tuple_key = (str(owner), self.name)
-        if tuple_key in generate:
-            return generate[tuple_key]
+        if tuple_key in generated:
+            return generated[tuple_key]
 
-        generate[tuple_key] = _MetaData(parent=str(owner), data=self.name)
+        generated[tuple_key] = _MetaData(parent=str(owner), data=self.name)
 
-        return generate[tuple_key]
+        return generated[tuple_key]
