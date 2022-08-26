@@ -30,4 +30,4 @@ $ python demo.py
 BANANA WATERMELON DURIAN
 ```
 
-You can check all the example at [demo.py]()
+You can check all the example at [demo.py](/demo.py).
