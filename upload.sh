@@ -9,7 +9,7 @@ pip install twine -U
 python3 setup.py sdist bdist_wheel --universal
 
 case $1 in
-release)
+production)
     echo upload to pypi
     python3 -m twine upload dist/*
     ;;
