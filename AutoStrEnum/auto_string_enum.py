@@ -36,6 +36,8 @@ class _MagicMeta(EnumMeta):
         return other.data in self.__dict__['_member_names_']
 
     def __instancecheck__(self, instance):
+        if not isinstance(instance, _MetaData):
+            return False
         return str(self) == instance.parent
 
 
