@@ -11,7 +11,7 @@ class _MetaData:
         return self.data
 
     def __repr__(self):
-        return self.__str__()
+        return self.data
 
     def __eq__(self, other):
         if not isinstance(other, _MetaData):
@@ -40,12 +40,17 @@ class _MagicMeta(EnumMeta):
             return False
         return str(self) == instance.parent
 
+    def __str__(self):
+        return self.__name__
+
+    def __repr__(self):
+        return self.__name__
+
 
 generated: dict = {}
 
 
 class AutoStrEnum(Enum, metaclass=_MagicMeta):
-
     def __get__(self, instance, owner):
         global generated
 
