@@ -39,6 +39,7 @@ if __name__ == '__main__':
     print('should be True:', isinstance(Fruit.BANANA, Fruit))
     print('should be False:', isinstance(Fruit.BANANA, str))
     print('should be False:', isinstance(Fruit.BANANA, MagicFruit))
+    print('should be False:', isinstance(False, Fruit))
 
     # We also can use as dict key!
     test_dict = {
@@ -57,6 +58,7 @@ should be True: True
 should be True: True
 should be True: True
 should be True: True
+should be False: False
 should be False: False
 should be False: False
 {BANANA: 2, DURIAN: 10, WATERMELON: 0}
