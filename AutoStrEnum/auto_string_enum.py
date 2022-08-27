@@ -1,4 +1,15 @@
+import inspect
 from enum import EnumMeta, Enum
+
+# default logger
+# import logging
+# logging.basicConfig(level=logging.DEBUG)
+
+# single logger
+from SingleLog.log import Logger
+logging = Logger('AutoStrEnum',
+                 # Logger.DEBUG
+                 )
 
 
 class _MetaData:
@@ -7,13 +18,18 @@ class _MetaData:
         self.parent = parent
         self.data = data
 
+        logging.debug(f'init meta data with {parent}, {data}')
+
     def __str__(self):
+        logging.debug(f'into meta data{inspect.stack()[0][3]}')
         return self.data
 
     def __repr__(self):
+        logging.debug(f'into meta data{inspect.stack()[0][3]}')
         return self.data
 
     def __eq__(self, other):
+        logging.debug(f'into meta data{inspect.stack()[0][3]}')
         if not isinstance(other, _MetaData):
             return False
         if self.parent != other.parent:
@@ -23,12 +39,14 @@ class _MetaData:
         return True
 
     def __hash__(self):
+        logging.debug(f'into meta data{inspect.stack()[0][3]}')
         return hash(f'{self.parent}{self.data}')
 
 
 class _MagicMeta(EnumMeta):
 
     def __contains__(self, other):
+        logging.debug(f'into magic meta{inspect.stack()[0][3]}')
         if not isinstance(other, _MetaData):
             return False
         if str(self) != other.parent:
@@ -36,15 +54,18 @@ class _MagicMeta(EnumMeta):
         return other.data in self.__dict__['_member_names_']
 
     def __instancecheck__(self, instance):
+        logging.debug(f'into magic meta{inspect.stack()[0][3]}')
         if not isinstance(instance, _MetaData):
             return False
         return str(self) == instance.parent
 
     def __str__(self):
-        return self.__name__
+        logging.debug(f'into magic meta{inspect.stack()[0][3]}')
+        return str(self.__name__)
 
     def __repr__(self):
-        return self.__name__
+        logging.debug(f'into magic meta{inspect.stack()[0][3]}')
+        return str(self.__name__)
 
 
 generated: dict = {}
@@ -52,6 +73,7 @@ generated: dict = {}
 
 class AutoStrEnum(Enum, metaclass=_MagicMeta):
     def __get__(self, instance, owner):
+        logging.debug(f'into AutoStrEnum{inspect.stack()[0][3]}')
         global generated
 
         tuple_key = (str(owner), self.name)
