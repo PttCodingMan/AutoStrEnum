@@ -10,7 +10,7 @@ And when you print it, you won't see the Enum name in front of the class member.
 pip install AutoStrEnum
 ```
 
-## Basic use
+## Demo
 
 ```python
 from enum import auto
@@ -31,6 +31,7 @@ class MagicFruit(AutoStrEnum):
 
 
 if __name__ == '__main__':
+    print(Fruit, MagicFruit)
     print(Fruit.BANANA, Fruit.WATERMELON, Fruit.DURIAN)
 
     print('should be True:', Fruit.BANANA in Fruit)
@@ -43,16 +44,18 @@ if __name__ == '__main__':
 
     # We also can use as dict key!
     test_dict = {
-        Fruit.BANANA: 2,
-        Fruit.DURIAN: 10,
-        Fruit.WATERMELON: 0
-    }
+        Fruit: {
+            Fruit.BANANA: 2,
+            Fruit.DURIAN: 10,
+            Fruit.WATERMELON: 0
+        }}
 
     print(test_dict)
 ```
 
 ```shell
 $ python demo.py
+Fruit MagicFruit
 BANANA WATERMELON DURIAN
 should be True: True
 should be True: True
@@ -61,7 +64,5 @@ should be True: True
 should be False: False
 should be False: False
 should be False: False
-{BANANA: 2, DURIAN: 10, WATERMELON: 0}
+{Fruit: {BANANA: 2, DURIAN: 10, WATERMELON: 0}}
 ```
-
-You can find all the example at [demo.py](https://github.com/PttCodingMan/AutoStrEnum/blob/main/demo.py)

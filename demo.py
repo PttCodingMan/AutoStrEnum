@@ -16,6 +16,7 @@ class MagicFruit(AutoStrEnum):
 
 
 if __name__ == '__main__':
+    print(Fruit, MagicFruit)
     print(Fruit.BANANA, Fruit.WATERMELON, Fruit.DURIAN)
 
     print('should be True:', Fruit.BANANA in Fruit)
@@ -28,9 +29,10 @@ if __name__ == '__main__':
 
     # We also can use as dict key!
     test_dict = {
-        Fruit.BANANA: 2,
-        Fruit.DURIAN: 10,
-        Fruit.WATERMELON: 0
-    }
+        Fruit: {
+            Fruit.BANANA: 2,
+            Fruit.DURIAN: 10,
+            Fruit.WATERMELON: 0
+        }}
 
     print(test_dict)
