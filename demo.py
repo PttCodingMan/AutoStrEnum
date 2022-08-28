@@ -1,12 +1,15 @@
+import json
+import pickle
 from enum import auto
 
-from AutoStrEnum import AutoStrEnum
+from AutoStrEnum import AutoStrEnum, AutoJsonEncoder
 
 
 class Fruit(AutoStrEnum):
     BANANA = auto()
     WATERMELON = auto()
     DURIAN = auto()
+    KIWI = auto()
 
 
 class MagicFruit(AutoStrEnum):
@@ -32,7 +35,11 @@ if __name__ == '__main__':
         Fruit: {
             Fruit.BANANA: 2,
             Fruit.DURIAN: 10,
-            Fruit.WATERMELON: 0
+            Fruit.WATERMELON: 0,
+            'Love': Fruit.KIWI
         }}
 
     print(test_dict)
+
+    # json dumps is also fine!
+    print('json dumps', json.dumps(test_dict, indent=4, cls=AutoJsonEncoder))
