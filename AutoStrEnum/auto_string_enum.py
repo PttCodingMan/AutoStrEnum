@@ -95,7 +95,9 @@ def is_auto_string_enum_type(obj: Any) -> bool:
 
 
 def convert_obj_to_str(obj: Any) -> Any:
-    if not isinstance(obj, dict):
+    if isinstance(obj, (tuple, list)):
+        return [convert_obj_to_str(o) for o in obj]
+    elif not isinstance(obj, dict):
         return obj
 
     for key, value in obj.copy().items():
