@@ -1,5 +1,4 @@
 import json
-import pickle
 from enum import auto
 
 from AutoStrEnum import AutoStrEnum, AutoJsonEncoder

@@ -1,8 +1,6 @@
-import json
-import pickle
 from enum import auto
 
-from AutoStrEnum import AutoStrEnum, AutoJsonEncoder
+from AutoStrEnum import AutoStrEnum
 
 
 class Fruit(AutoStrEnum):
