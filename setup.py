@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='AutoStrEnum',  # Required
-    version='0.0.6',
+    version='0.0.7',
 
     description=open('README.md', encoding="utf-8").read(),
     description_content_type='text/markdown',
@@ -28,5 +28,5 @@ setup(
 
     python_requires='>=3.8',
     packages=['AutoStrEnum'],
-    install_requires=['SingleLog'],
+    install_requires=[],
 )
