@@ -97,16 +97,15 @@ def is_auto_string_enum_type(obj: Any) -> bool:
 def convert_obj_to_str(obj: Any) -> Any:
     if isinstance(obj, (tuple, list)):
         return [convert_obj_to_str(o) for o in obj]
-    elif not isinstance(obj, dict):
-        return obj
 
-    for key, value in obj.copy().items():
-        if is_auto_string_enum_type(key):
-            obj.pop(key)
-
+    if isinstance(obj, dict):
+        for key, value in obj.copy().items():
+            if not is_auto_string_enum_type(key):
+                continue
             if is_auto_string_enum_type(value):
                 value = str(value)
             obj[str(key)] = convert_obj_to_str(value)
+            obj.pop(key)
 
     return obj
 
