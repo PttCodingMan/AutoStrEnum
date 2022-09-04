@@ -31,16 +31,14 @@ class _MetaData:
 class _MagicMeta(EnumMeta):
 
     def __contains__(self, other):
-        if not isinstance(other, _MetaData):
+        if not isinstance(other, str):
             return False
-        if str(self) != other.parent:
-            return False
-        return other.data in self.__dict__['_member_names_']
+        return other in self.__dict__['_member_names_']
 
     def __instancecheck__(self, instance):
-        if not isinstance(instance, _MetaData):
+        if not isinstance(instance, str):
             return False
-        return str(self) == instance.parent
+        return instance in self.__dict__['_member_names_']
 
     def __str__(self):
         return str(self.__name__)
