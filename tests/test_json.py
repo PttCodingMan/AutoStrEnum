@@ -28,6 +28,7 @@ if __name__ == '__main__':
     print('json loads', json_obj := json.loads(string_obj))
 
     print(json_obj[Fruit.BANANA])
+    # print(json_obj[Fruit])
 
     test_dict = [
         {
@@ -49,3 +50,5 @@ if __name__ == '__main__':
     print(test_dict)
 
     print('json dumps', json.dumps(test_dict, indent=4, cls=AutoJsonEncoder))
+
+

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='AutoStrEnum',  # Required
-    version='0.0.9',
+    version='0.0.10',
 
     description=open('README.md', encoding="utf-8").read(),
     description_content_type='text/markdown',

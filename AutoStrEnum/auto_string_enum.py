@@ -60,7 +60,7 @@ class AutoStrEnum(Enum, metaclass=_MagicMeta):
 
         generated[tuple_key] = _MetaData(parent=str(owner), data=self.name)
 
-        return generated[tuple_key]
+        return generated[tuple_key].data
 
 
 def is_auto_string_enum_type(obj: Any) -> bool:

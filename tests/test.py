@@ -1,3 +1,4 @@
+import platform
 from enum import auto
 
 from AutoStrEnum import AutoStrEnum
@@ -17,6 +18,7 @@ class MagicFruit(AutoStrEnum):
 
 
 if __name__ == '__main__':
+    print(platform.python_version())
     print(Fruit, MagicFruit)
     print(Fruit.BANANA, Fruit.WATERMELON, Fruit.DURIAN)
 
@@ -27,13 +29,10 @@ if __name__ == '__main__':
     print('should be False:', isinstance(Fruit.BANANA, str))
     print('should be False:', isinstance(Fruit.BANANA, MagicFruit))
 
-    # We also can use as dict key!
-    test_dict = {
-        Fruit: {
-            Fruit.BANANA: 2,
-            Fruit.DURIAN: 10,
-            Fruit.WATERMELON: 0,
-            'Love': Fruit.KIWI
-        }}
+    fruits = [Fruit.BANANA, Fruit.WATERMELON, Fruit.DURIAN, Fruit.KIWI]
 
-    print(test_dict)
+    if Fruit.BANANA in fruits:
+        print('Banana is in fruits')
+
+    if 'BANANA' in fruits:
+        print('BANANA is in fruits')
