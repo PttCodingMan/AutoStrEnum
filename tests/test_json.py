@@ -14,6 +14,7 @@ class Fruit(AutoStrEnum):
 if __name__ == '__main__':
     # We also can use as dict key!
     test_dict = {
+        Fruit.BANANA: 6,
         Fruit: {
             Fruit.BANANA: 2,
             Fruit.DURIAN: 10,
@@ -23,7 +24,10 @@ if __name__ == '__main__':
 
     print(test_dict)
 
-    print('json dumps', json.dumps(test_dict, indent=4, cls=AutoJsonEncoder))
+    print('json dumps', string_obj := json.dumps(test_dict, indent=4, cls=AutoJsonEncoder))
+    print('json loads', json_obj := json.loads(string_obj))
+
+    print(json_obj[Fruit.BANANA])
 
     test_dict = [
         {

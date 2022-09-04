@@ -6,9 +6,8 @@ from typing import Any
 class _MetaData:
 
     def __init__(self, parent: str, data: str):
-        self.parent = parent
-        self.data = data
-
+        self.parent = str(parent)
+        self.data = str(data)
 
     def __str__(self):
         return self.data
@@ -59,7 +58,7 @@ class AutoStrEnum(Enum, metaclass=_MagicMeta):
 
         tuple_key = (str(owner), self.name)
         if tuple_key in generated:
-            return generated[tuple_key]
+            return generated[tuple_key].data
 
         generated[tuple_key] = _MetaData(parent=str(owner), data=self.name)
 
